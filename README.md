@@ -8,10 +8,39 @@ Highlight features can be found here: http://andre-simon.de/dokuwiki/doku.php?id
 
 ![Logo](doc/hilightcommander.png)
 
-
+Features:
+	- Lua based plugins
+	- Syntax support for 200+ languages, add your own
+	- Over 80+ themes, or make your own
+	- Select and copy RTF to clipboard
+	- Configure settings in yaml file
+	
+		example:
+		
+		```
+		theme: bitwiseninja.theme
+		pagesize: letter
+		rtfcharstyles: false
+		wraplines: true
+		includestyle: false
+		rtfpagecolor: true
+		printlinenumbers: true
+		printzeros: true
+		fragmentcode: false
+		keepinjections: false
+		linenumberwidth: 5
+		linewidth: 80
+		encoding: utf8
+		basefont: FiraCode-Medium
+		basefontsize: 8
+		disabletrailingnl: false
+		indentationscheme: allman
+		```
+	
 I have current releases for Windows 64.
 
 Installing:
+
 	unzip achive into wlx plugins directory
 	
 	See http://andre-simon.de/dokuwiki/doku.php for highlight usage
