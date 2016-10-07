@@ -15,9 +15,9 @@ Features:
 	- Select and copy RTF to clipboard
 	- Configure settings in yaml file
 	
-		example:
+	example:
 		
-		```
+```
 		theme: bitwiseninja.theme
 		pagesize: letter
 		rtfcharstyles: false
@@ -35,7 +35,7 @@ Features:
 		basefontsize: 8
 		disabletrailingnl: false
 		indentationscheme: allman
-		```
+```
 	
 I have current releases for Windows 64.
 
