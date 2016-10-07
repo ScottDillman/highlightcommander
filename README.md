@@ -9,10 +9,11 @@ Highlight features can be found here: http://andre-simon.de/dokuwiki/doku.php?id
 ![Logo](doc/hilightcommander.png)
 
 
-I have current releases for Windows 64 and Linux 64.
+I have current releases for Windows 64.
 
 Installing:
 	unzip achive into wlx plugins directory
+	
 	See http://andre-simon.de/dokuwiki/doku.php for highlight usage
 
 Build requirements
@@ -21,10 +22,6 @@ Build requirements
 		- CMake
 		- MSYS2 and Mingw-w64
 
-	-Linux
-		- CMake
-		- Build essential
-
 Building
 
 	1. clone repositiory
@@ -32,6 +29,5 @@ Building
 	3. mkdir build
 	4. cd build
 	3. Generate project files using cmake
-		a. Linux: cmake ..
-		b. Windows: cmake -G "MinGW Makefiles"
+		- cmake -G "MinGW Makefiles"
 	4. build package: make package
