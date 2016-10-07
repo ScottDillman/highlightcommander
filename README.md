@@ -13,6 +13,7 @@ I have current releases for Windows 64 and Linux 64.
 
 Installing:
 	unzip achive into wlx plugins directory
+	
 	See http://andre-simon.de/dokuwiki/doku.php for highlight usage
 
 Build requirements
