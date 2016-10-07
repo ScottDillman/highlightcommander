@@ -62,4 +62,7 @@ I have current releases for Windows 64.
 	```
 	cmake -G "MinGW Makefiles"
 	```
-4. build package: make package
+4. build package
+	```
+	make package
+	```
