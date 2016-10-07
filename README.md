@@ -8,12 +8,13 @@ Highlight features can be found here: http://andre-simon.de/dokuwiki/doku.php?id
 
 ![Logo](doc/hilightcommander.png)
 
-Features:
-	- Lua based plugins
-	- Syntax support for 200+ languages, add your own
-	- Over 80+ themes, or make your own
-	- Select and copy RTF to clipboard
-	- Configure settings in yaml file
+**Features:**
+
+	* Lua based plugins
+	* Syntax support for 200+ languages, add your own
+	* Over 80+ themes, or make your own
+	* Select and copy RTF to clipboard
+	* Configure settings in yaml file
 	
 	example:
 		
@@ -39,19 +40,19 @@ Features:
 	
 I have current releases for Windows 64.
 
-Installing:
+**Installing:**
 
 	unzip achive into wlx plugins directory
 	
 	See http://andre-simon.de/dokuwiki/doku.php for highlight usage
 
-Build requirements
+**Build requirements**
 
 	-Windows
 		- CMake
 		- MSYS2 and Mingw-w64
 
-Building
+**Building**
 
 	1. clone repositiory
 	2. cd into cloned repository root
