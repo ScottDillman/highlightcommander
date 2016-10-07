@@ -59,7 +59,7 @@ I have current releases for Windows 64.
 3. mkdir build
 4. cd build
 3. Generate project files using cmake
-```
-cmake -G "MinGW Makefiles"
-```
+	```
+	cmake -G "MinGW Makefiles"
+	```
 4. build package: make package
