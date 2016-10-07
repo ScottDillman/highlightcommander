@@ -54,10 +54,12 @@ I have current releases for Windows 64.
 
 **Building**
 
-	1. clone repositiory
-	2. cd into cloned repository root
-	3. mkdir build
-	4. cd build
-	3. Generate project files using cmake
-		- cmake -G "MinGW Makefiles"
-	4. build package: make package
+1. clone repositiory
+2. cd into cloned repository root
+3. mkdir build
+4. cd build
+3. Generate project files using cmake
+```
+cmake -G "MinGW Makefiles"
+```
+4. build package: make package
