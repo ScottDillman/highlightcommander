@@ -8,8 +8,9 @@ Highlight features can be found here: http://andre-simon.de/dokuwiki/doku.php?id
 
 ![Logo](doc/hilightcommander.png)
 
+LINUX SUPPORT PENDING
 
-I have current releases for Windows 64 and Linux 64.
+I have current releases for Windows 64 with plans for Linux 64.
 
 Installing:
 	unzip achive into wlx plugins directory
