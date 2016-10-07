@@ -1,0 +1,21 @@
+-- scott@bitsise.ninja
+Description="Print"
+Default        = { Colour="#000000" }
+Canvas         = { Colour="#ffffff" }
+Number         = { Colour="#c4a000" }
+Escape         = { Colour="#dd7900" }
+String         = { Colour="#75507b" }
+StringPreProc  = { Colour="#0080c0" }
+BlockComment   = { Colour="#4e9a06", Italic=false }
+PreProcessor   = { Colour="#06989a", Bold=false }
+LineNum        = { Colour="#888888" }
+Operator       = { Colour="#000000", Bold=false }
+LineComment = BlockComment
+Interpolation  = Escape
+
+Keywords = {
+  { Colour= "#004080", Bold=true },
+  { Colour= "#3465a4", Bold=true },
+  { Colour= "#0000a0", Bold=true },
+  { Colour= "#800000", Bold=false },
+}

@@ -1,0 +1,17 @@
+theme: bitwiseninja.theme
+pagesize: letter
+rtfcharstyles: false
+wraplines: true
+includestyle: false
+rtfpagecolor: true
+printlinenumbers: true
+printzeros: true
+fragmentcode: false
+keepinjections: false
+linenumberwidth: 5
+linewidth: 80
+encoding: utf8
+basefont: FiraCode-Medium
+basefontsize: 9
+disabletrailingnl: false
+indentationscheme: allman
