@@ -60,7 +60,7 @@ See http://andre-simon.de/dokuwiki/doku.php for highlight usage
 4. cd build
 3. Generate project files using cmake
 	```
-	cmake -G "MinGW Makefiles"
+	cmake -G "MinGW Makefiles" ..
 	```
 4. build package
 	```
