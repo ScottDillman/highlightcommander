@@ -373,7 +373,7 @@ string processFile( const string &apppath ,const string &s)
 ////////////////////////////////////////////////////////////////////////////////
 /// add linux
 
-#ifdef __linux__ 
+#ifdef __linux__
 
 #endif
 
@@ -813,36 +813,38 @@ int __stdcall ListPrint(HWND ListWin,char* FileToPrint,char* DefPrinter,int Prin
 
 void __stdcall ListGetDetectString(char* DetectString,int maxlen)
 {
+	strncpy (DetectString, "(EXT = \" HTML \") | (EXT = \" HTM \") | (EXT = \" XHTM \")", maxlen);
+
   // OMG do we cover a hell of a lot of langs
-  strlcpy(DetectString, "EXT='ADB'|EXT='ADS'|EXT='A'|EXT='GNAD'|EXT='ALG'|EXT='DAT'|EXT='RUN'|"
-		"EXT='S4'|EXT='S4T'|EXT='S4H'|EXT='HND'|EXT='T4'|EXT='A51'|EXT='29K'|"
-		"EXT='68S'|EXT='68X'|EXT='X86'|EXT='S'|EXT='ASPX'|EXT='ASHX'|EXT='ASCX'|"
-		"EXT='DATS'|EXT='WAS'|EXT='WUD'|EXT='CMD'|EXT='C++'|EXT='CPP'|EXT='CXX'|"
-		"EXT='CC'|EXT='H'|EXT='HH'|EXT='HXX'|EXT='HPP'|EXT='CU'|EXT='INP'|EXT='CFC'|"
-		"EXT='CFM'|EXT='COB'|EXT='CBL'|EXT='PATCH'|EXT='DTSI'|EXT='E'|EXT='SE'|"
-		"EXT='HRL'|EXT='ERL'|EXT='EX'|EXT='EXW'|EXT='WXU'|EXT='EW'|EXT='EU'|EXT='F'|"
-		"EXT='FOR'|EXT='FTN'|EXT='F95'|EXT='F90'|EXT='CLASS'|EXT='HS'|EXT='DOXYFILE'|"
-		"EXT='DESKTOP'|EXT='GROOVY'|EXT='GRV'|EXT='JL'|EXT='KT'|EXT='B'|EXT='CL'|"
-		"EXT='CLISP'|EXT='EL'|EXT='LSP'|EXT='SBCL'|EXT='SCOM'|EXT='MAK'|EXT='MK'|"
-		"EXT='MAKEFILE'|EXT='MIB'|EXT='SMI'|EXT='ML'|EXT='MLI'|EXT='MOD'|EXT='DEF'|"
-		"EXT='M3'|EXT='I3'|EXT='OOC'|EXT='PHP3'|EXT='PHP4'|EXT='PHP5'|EXT='PHP6'|"
-		"EXT='PMOD'|EXT='FF'|EXT='FP'|EXT='FPP'|EXT='RPP'|EXT='SF'|EXT='SP'|EXT='SPB'|"
-		"EXT='SPP'|EXT='SPS'|EXT='WP'|EXT='WF'|EXT='WPP'|EXT='WPS'|EXT='WPB'|EXT='BDY'|"
-		"EXT='SPE'|EXT='PL'|EXT='PERL'|EXT='CGI'|EXT='PM'|EXT='PLX'|EXT='PLEX'|EXT='P'|"
-		"EXT='I'|EXT='W'|EXT='RB'|EXT='RUBY'|EXT='PP'|EXT='RJS'|EXT='GEMFILE'|"
-		"EXT='RAKEFILE'|EXT='REX'|EXT='RX'|EXT='THE'|EXT='BASH'|EXT='ZSH'|EXT='EBUILD'|"
-		"EXT='ECLASS'|EXT='ST'|EXT='GST'|EXT='SQ'|EXT='SP'|EXT='WISH'|EXT='ITCL'|"
-		"EXT='STY'|EXT='CLS'|EXT='BAS'|EXT='BASIC'|EXT='BI'|EXT='VBS'|EXT='V'|"
-		"EXT='HTM'|EXT='XHTML'|EXT='SGM'|EXT='SGML'|EXT='NRM'|EXT='ENT'|EXT='HDR'|"
-		"EXT='HUB'|EXT='DTD'|EXT='GLADE'|EXT='WML'|EXT='VXML'|EXT='WML'|EXT='TLD'|"
-		"EXT='CSPROJ'|EXT='XSL'|EXT='ECF'|EXT='JNLP'|EXT='XSD'|EXT='RESX'|EXT='FS'|"
-		"EXT='FSX'|EXT='4GL'|EXT='BB'|EXT='ISS'|EXT='LS'|EXT='A4C'|EXT='AS'|EXT='EXP'|"
-		"EXT='HX'|EXT='PYX'|EXT='ABP'|EXT='CS'|EXT='ILI'|EXT='LGT'|EXT='M'|EXT='NSI'|"
-		"EXT='NSH'|EXT='Y'|EXT='NUT'|EXT='LBN'|EXT='MEL'|EXT='N'|EXT='SC'|EXT='NRX'|"
-		"EXT='CB'|EXT='DOT'|EXT='SMA'|EXT='AU3'|EXT='CHL'|EXT='AHK'|EXT='FAME'|EXT='MO'|"
-		"EXT='MPL'|EXT='J'|EXT='SNO'|EXT='ICN'|EXT='FLX'|EXT='LSL'|EXT='LY'|EXT='NAS'|"
-		"EXT='ICL'|EXT='ASM'|EXT='BIB'|EXT='PY'|EXT='TEXT'|EXT='TTL'|EXT='NT'|EXT='BFR'|"
-		"EXT='SCI'|EXT='SCE'|EXT='NBS'", maxlen);
+  strlcpy(DetectString, "(EXT='ADB')|(EXT='ADS')|(EXT='A')|(EXT='GNAD')|(EXT='ALG')|(EXT='DAT')|(EXT='RUN')|"
+		"(EXT='S4')|(EXT='S4T')|(EXT='S4H')|(EXT='HND')|(EXT='T4')|(EXT='A51')|(EXT='29K')|"
+		"(EXT='68S')|(EXT='68X')|(EXT='X86')|(EXT='S')|(EXT='ASPX')|(EXT='ASHX')|(EXT='ASCX')|"
+		"(EXT='DATS')|(EXT='WAS')|(EXT='WUD')|(EXT='CMD')|(EXT='C++')|(EXT='CPP')|(EXT='CXX')|"
+		"(EXT='CC')|(EXT='H')|(EXT='HH')|(EXT='HXX')|(EXT='HPP')|(EXT='CU')|(EXT='INP')|(EXT='CFC')|"
+		"(EXT='CFM')|(EXT='COB')|(EXT='CBL')|(EXT='PATCH')|(EXT='DTSI')|(EXT='E')|(EXT='SE')|"
+		"(EXT='HRL')|(EXT='ERL')|(EXT='EX')|(EXT='EXW')|(EXT='WXU')|(EXT='EW')|(EXT='EU')|(EXT='F')|"
+		"(EXT='FOR')|(EXT='FTN')|(EXT='F95')|(EXT='F90')|(EXT='CLASS')|(EXT='HS')|(EXT='DOXYFILE')|"
+		"(EXT='DESKTOP')|(EXT='GROOVY')|(EXT='GRV')|(EXT='JL')|(EXT='KT')|(EXT='B')|(EXT='CL')|"
+		"(EXT='CLISP')|(EXT='EL')|(EXT='LSP')|(EXT='SBCL')|(EXT='SCOM')|(EXT='MAK')|(EXT='MK')|"
+		"(EXT='MAKEFILE')|(EXT='MIB')|(EXT='SMI')|(EXT='ML')|(EXT='MLI')|(EXT='MOD')|(EXT='DEF')|"
+		"(EXT='M3')|(EXT='I3')|(EXT='OOC')|(EXT='PHP3')|(EXT='PHP4')|(EXT='PHP5')|(EXT='PHP6')|"
+		"(EXT='PMOD')|(EXT='FF')|(EXT='FP')|(EXT='FPP')|(EXT='RPP')|(EXT='SF')|(EXT='SP')|(EXT='SPB')|"
+		"(EXT='SPP')|(EXT='SPS')|(EXT='WP')|(EXT='WF')|(EXT='WPP')|(EXT='WPS')|(EXT='WPB')|(EXT='BDY')|"
+		"(EXT='SPE')|(EXT='PL')|(EXT='PERL')|(EXT='CGI')|(EXT='PM')|(EXT='PLX')|(EXT='PLEX')|(EXT='P')|"
+		"(EXT='I')|(EXT='W')|(EXT='RB')|(EXT='RUBY')|(EXT='PP')|(EXT='RJS')|(EXT='GEMFILE')|"
+		"(EXT='RAKEFILE')|(EXT='REX')|(EXT='RX')|(EXT='THE')|(EXT='BASH')|(EXT='ZSH')|(EXT='EBUILD')|"
+		"(EXT='ECLASS')|(EXT='ST')|(EXT='GST')|(EXT='SQ')|(EXT='SP')|(EXT='WISH')|(EXT='ITCL')|"
+		"(EXT='STY')|(EXT='CLS')|(EXT='BAS')|(EXT='BASIC')|(EXT='BI')|(EXT='VBS')|(EXT='V')|"
+		"(EXT='HTM')|(EXT='XHTML')|(EXT='SGM')|(EXT='SGML')|(EXT='NRM')|(EXT='ENT')|(EXT='HDR')|"
+		"(EXT='HUB')|(EXT='DTD')|(EXT='GLADE')|(EXT='WML')|(EXT='VXML')|(EXT='WML')|(EXT='TLD')|"
+		"(EXT='CSPROJ')|(EXT='XSL')|(EXT='ECF')|(EXT='JNLP')|(EXT='XSD')|(EXT='RESX')|(EXT='FS')|"
+		"(EXT='FSX')|(EXT='4GL')|(EXT='BB')|(EXT='ISS')|(EXT='LS')|(EXT='A4C')|(EXT='AS')|(EXT='EXP')|"
+		"(EXT='HX')|(EXT='PYX')|(EXT='ABP')|(EXT='CS')|(EXT='ILI')|(EXT='LGT')|(EXT='M')|(EXT='NSI')|"
+		"(EXT='NSH')|(EXT='Y')|(EXT='NUT')|(EXT='LBN')|(EXT='MEL')|(EXT='N')|(EXT='SC')|(EXT='NRX')|"
+		"(EXT='CB')|(EXT='DOT')|(EXT='SMA')|(EXT='AU3')|(EXT='CHL')|(EXT='AHK')|(EXT='FAME')|(EXT='MO')|"
+		"(EXT='MPL')|(EXT='J')|(EXT='SNO')|(EXT='ICN')|(EXT='FLX')|(EXT='LSL')|(EXT='LY')|(EXT='NAS')|"
+		"(EXT='ICL')|(EXT='ASM')|(EXT='BIB')|(EXT='PY')|(EXT='T(EXT')|(EXT='TTL')|(EXT='NT')|(EXT='BFR')|"
+		"(EXT='SCI')|(EXT='SCE')|(EXT='NBS')", maxlen);
 
 }
 
