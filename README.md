@@ -4,7 +4,7 @@ HighlightCommander
 Syntax aware lister for double commander using André Simon's highlight library http://www.andre-simon.de/doku/highlight/en/highlight.php
 Based on the original Highlight lister from Jens Theeß https://web.archive.org/web/20090508044550/http://www.theess.com/highlight
 
-Highlight features can be found here: http://andre-simon.de/dokuwiki/doku.php?id=en:features
+Highlight features can be found here! http://andre-simon.de/dokuwiki/doku.php?id=en:features
 
 ![Logo](doc/hilightcommander.png)
 
