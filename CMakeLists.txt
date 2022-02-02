@@ -1,6 +1,12 @@
-
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 
+set(CMAKE_GENERATOR "Ninja")
+
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+    add_compile_options (-fdiagnostics-color=always)
+elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+    add_compile_options (-fcolor-diagnostics)
+endif ()
 
 SET(CPACK_GENERATOR "ZIP")
 SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Higlight Commander Lister Plugin")
@@ -23,19 +29,47 @@ project (highlightcommander)
 add_subdirectory (yaml-cpp)
 
 include_directories(".")
-include_directories("./highlight/include")
+
+include_directories("./highlight/src/include/")
+include_directories("./sdk")
 include_directories("./yaml-cpp/include")
 
-add_library(highlightcommander MODULE listplug.cpp hc_wlx.cpp hc_wlx.h listplug.h resource.h cmdlineoptions.h cmdlineoptions.cpp help.h help.cpp arg_parser.cc arg_parser.h ./highlight/core/ansigenerator.cpp ./highlight/core/bbcodegenerator.cpp ./highlight/core/codegenerator.cpp ./highlight/core/datadir.cpp ./highlight/core/elementstyle.cpp ./highlight/core/htmlgenerator.cpp ./highlight/core/latexgenerator.cpp ./highlight/core/odtgenerator.cpp ./highlight/core/pangogenerator.cpp ./highlight/core/platform_fs.cpp ./highlight/core/preformatter.cpp ./highlight/core/rtfgenerator.cpp ./highlight/core/stringtools.cpp ./highlight/core/stylecolour.cpp ./highlight/core/svggenerator.cpp ./highlight/core/syntaxreader.cpp ./highlight/core/texgenerator.cpp ./highlight/core/themereader.cpp ./highlight/core/xhtmlgenerator.cpp ./highlight/core/xterm256generator.cpp ./highlight/core/Diluculum/InternalUtils.cpp ./highlight/core/Diluculum/LuaExceptions.cpp ./highlight/core/Diluculum/LuaFunction.cpp ./highlight/core/Diluculum/LuaState.cpp ./highlight/core/Diluculum/LuaUserData.cpp ./highlight/core/Diluculum/LuaUtils.cpp ./highlight/core/Diluculum/LuaValue.cpp ./highlight/core/Diluculum/LuaVariable.cpp ./highlight/core/Diluculum/LuaWrappers.cpp ./highlight/core/astyle/ASBeautifier.cpp ./highlight/core/astyle/ASEnhancer.cpp ./highlight/core/astyle/ASFormatter.cpp ./highlight/core/astyle/ASResource.cpp ./highlight/core/astyle/ASStreamIterator.cpp ./highlight/include/ansigenerator.h ./highlight/include/bbcodegenerator.h ./highlight/include/charcodes.h ./highlight/include/codegenerator.h ./highlight/include/datadir.h ./highlight/include/elementstyle.h ./highlight/include/enums.h ./highlight/include/htmlgenerator.h ./highlight/include/latexgenerator.h ./highlight/include/odtgenerator.h ./highlight/include/pangogenerator.h ./highlight/include/platform_fs.h ./highlight/include/preformatter.h ./highlight/include/rtfgenerator.h ./highlight/include/stringtools.h ./highlight/include/stylecolour.h ./highlight/include/svggenerator.h ./highlight/include/syntaxreader.h ./highlight/include/texgenerator.h ./highlight/include/themereader.h ./highlight/include/version.h ./highlight/include/xhtmlgenerator.h ./highlight/include/xterm256generator.h ./highlight/include/astyle/ASStreamIterator.h ./highlight/include/astyle/astyle.h)
+include_directories("/usr/include/qt/QtWidgets")
+include_directories("/usr/include/qt/")
+include_directories("/usr/include/qt/QtCore")
+include_directories("/usr/include/qt/QtGui")
+include_directories("./highlight/src/include")
+include_directories("./yaml-cpp/include")
 
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -optl-static -static -static-libgcc -static-libstdc++")
+## lua support
+add_library(Diluculum OBJECT ./highlight/src/core/Diluculum/InternalUtils.cpp ./highlight/src/core/Diluculum/LuaExceptions.cpp ./highlight/src/core/Diluculum/LuaFunction.cpp ./highlight/src/core/Diluculum/LuaState.cpp ./highlight/src/core/Diluculum/LuaUserData.cpp ./highlight/src/core/Diluculum/LuaUtils.cpp ./highlight/src/core/Diluculum/LuaValue.cpp ./highlight/src/core/Diluculum/LuaVariable.cpp ./highlight/src/core/Diluculum/LuaWrappers.cpp)
 
-target_compile_options(highlightcommander PUBLIC -std=c++11 -Wall -O2 )
-target_link_libraries (highlightcommander yaml-cpp comdlg32 gdi32 comdlg32 lua)
-set_target_properties(highlightcommander PROPERTIES SUFFIX ".wlx64")
+# yaml support
+add_library(yaml OBJECT ./yaml-cpp/src/binary.cpp ./yaml-cpp/src/convert.cpp ./yaml-cpp/src/depthguard.cpp ./yaml-cpp/src/directives.cpp ./yaml-cpp/src/emit.cpp ./yaml-cpp/src/emitfromevents.cpp ./yaml-cpp/src/emitter.cpp ./yaml-cpp/src/emitterstate.cpp ./yaml-cpp/src/emitterutils.cpp ./yaml-cpp/src/exceptions.cpp ./yaml-cpp/src/exp.cpp ./yaml-cpp/src/memory.cpp ./yaml-cpp/src/nodebuilder.cpp ./yaml-cpp/src/node.cpp ./yaml-cpp/src/node_data.cpp ./yaml-cpp/src/nodeevents.cpp ./yaml-cpp/src/null.cpp ./yaml-cpp/src/ostream_wrapper.cpp ./yaml-cpp/src/parse.cpp ./yaml-cpp/src/parser.cpp ./yaml-cpp/src/regex_yaml.cpp ./yaml-cpp/src/scanner.cpp ./yaml-cpp/src/scanscalar.cpp ./yaml-cpp/src/scantag.cpp ./yaml-cpp/src/scantoken.cpp ./yaml-cpp/src/simplekey.cpp ./yaml-cpp/src/singledocparser.cpp ./yaml-cpp/src/stream.cpp ./yaml-cpp/src/tag.cpp)
+
+## astyle support
+add_library(astyle OBJECT ./highlight/src/core/astyle/ASBeautifier.cpp ./highlight/src/core/astyle/ASEnhancer.cpp ./highlight/src/core/astyle/ASFormatter.cpp ./highlight/src/core/astyle/ASResource.cpp ./highlight/src/core/astyle/ASStreamIterator.cpp)
+
+# highlight core
+add_library(core OBJECT ./highlight/src/core/ansigenerator.cpp ./highlight/src/core/bbcodegenerator.cpp ./highlight/src/core/codegenerator.cpp ./highlight/src/core/datadir.cpp ./highlight/src/core/elementstyle.cpp ./highlight/src/core/htmlgenerator.cpp ./highlight/src/core/keystore.cpp ./highlight/src/core/latexgenerator.cpp ./highlight/src/core/lspclient.cpp ./highlight/src/core/odtgenerator.cpp ./highlight/src/core/pangogenerator.cpp ./highlight/src/core/platform_fs.cpp ./highlight/src/core/preformatter.cpp ./highlight/src/core/rtfgenerator.cpp ./highlight/src/core/stringtools.cpp ./highlight/src/core/stylecolour.cpp ./highlight/src/core/svggenerator.cpp ./highlight/src/core/syntaxreader.cpp ./highlight/src/core/texgenerator.cpp ./highlight/src/core/themereader.cpp ./highlight/src/core/xhtmlgenerator.cpp ./highlight/src/core/xterm256generator.cpp)
+
+add_library(app OBJECT src/hc_wlx.cpp)
+
+## main wlx plugin
+add_library(highlightcommander MODULE src/plugin.cpp)
+
+target_compile_options(highlightcommander PUBLIC -std=c++17 -Wall -O2 -fdiagnostics-color=always)
+
+IF (WIN32)
+ target_link_libraries (highlightcommander comdlg32 gdi32 comdlg32 ryml Diluculum astyle core app)
+ELSE()
+  target_link_libraries (highlightcommander lua yaml Diluculum astyle core app)
+ENDIF()
+
+set_target_properties(highlightcommander PROPERTIES SUFFIX ".wlx")
 set_target_properties(highlightcommander PROPERTIES PREFIX "")
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++ -Wl,-Bstatic -lstdc++ -lpthread -Wl,-Bdynamic")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -static-libgcc -static-libstdc++ -Wl,-Bstatic -lstdc++ -lpthread -Wl,-Bdynamic,--no-as-needed")
 
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/dist/" DESTINATION ".")
 install(TARGETS highlightcommander DESTINATION ".")
