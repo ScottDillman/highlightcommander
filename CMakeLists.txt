@@ -64,6 +64,12 @@ include_directories("/usr/include/qt/QtGui")
 include_directories("./highlight/src/include")
 include_directories("./yaml-cpp/include")
 
+IF (WIN32)
+find_package(Lua REQUIRED)
+target_include_directories(main PRIVATE ${LUA_INCLUDE_DIR})
+target_link_libraries(main PRIVATE ${LUA_LIBRARIES})
+ENDIF()
+
 ## lua support
 add_library(Diluculum OBJECT ./highlight/src/core/Diluculum/InternalUtils.cpp ./highlight/src/core/Diluculum/LuaExceptions.cpp ./highlight/src/core/Diluculum/LuaFunction.cpp ./highlight/src/core/Diluculum/LuaState.cpp ./highlight/src/core/Diluculum/LuaUserData.cpp ./highlight/src/core/Diluculum/LuaUtils.cpp ./highlight/src/core/Diluculum/LuaValue.cpp ./highlight/src/core/Diluculum/LuaVariable.cpp ./highlight/src/core/Diluculum/LuaWrappers.cpp)
 
@@ -105,6 +111,7 @@ IF (WIN32)
 ELSE()
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -static-libgcc -static-libstdc++ -Wl,-Bstatic -lstdc++ -lpthread -Wl,-Bdynamic,--no-as-needed")
 ENDIF()
+
 ## main files
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/dist/" DESTINATION ".")
 ## themes
