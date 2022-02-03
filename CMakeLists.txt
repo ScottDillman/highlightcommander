@@ -86,7 +86,10 @@ add_library(highlightcommander MODULE src/plugin.cpp)
 
 IF (WIN32)
 find_package(Lua REQUIRED)
-target_include_directories(highlightcommander PRIVATE ${LUA_INCLUDE_DIR})
+
+include_directories(${LUA_INCLUDE_DIR})
+
+## target_include_directories(highlightcommander ${LUA_INCLUDE_DIR})
 ## target_link_libraries(highlightcommander PRIVATE ${LUA_LIBRARIES})
 ENDIF()
 
