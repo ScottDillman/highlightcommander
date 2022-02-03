@@ -83,7 +83,11 @@ add_library(app OBJECT src/hc_wlx.cpp)
 add_library(highlightcommander MODULE src/plugin.cpp)
 
 ## compiler options
+IF (WIN32)
+target_compile_options(highlightcommander PUBLIC /std:c++17 /Wall /O2)
+ELSE()
 target_compile_options(highlightcommander PUBLIC -std=c++17 -Wall -O2 -fdiagnostics-color=always)
+ENDIF()
 
 IF (WIN32)
  target_link_libraries (highlightcommander comdlg32 gdi32 comdlg32 ryml Diluculum astyle core app)
@@ -96,8 +100,11 @@ set_target_properties(highlightcommander PROPERTIES SUFFIX ".wlx")
 set_target_properties(highlightcommander PROPERTIES PREFIX "")
 
 ## linker options
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -static-libgcc -static-libstdc++ -Wl,-Bstatic -lstdc++ -lpthread -Wl,-Bdynamic,--no-as-needed")
+IF (WIN32)
 
+ELSE()
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -static-libgcc -static-libstdc++ -Wl,-Bstatic -lstdc++ -lpthread -Wl,-Bdynamic,--no-as-needed")
+ENDIF()
 ## main files
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/dist/" DESTINATION ".")
 ## themes
