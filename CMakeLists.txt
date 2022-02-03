@@ -66,8 +66,8 @@ include_directories("./yaml-cpp/include")
 
 IF (WIN32)
 find_package(Lua REQUIRED)
-target_include_directories(PRIVATE ${LUA_INCLUDE_DIR})
-target_link_libraries(PRIVATE ${LUA_LIBRARIES})
+target_include_directories(highlightcommander PRIVATE ${LUA_INCLUDE_DIR})
+target_link_libraries(highlightcommander PRIVATE ${LUA_LIBRARIES})
 ENDIF()
 
 ## lua support
