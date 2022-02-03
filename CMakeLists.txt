@@ -1,6 +1,10 @@
-cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.22 FATAL_ERROR)
 
+project (highlightcommander)
+
+## defaults
 set(CMAKE_GENERATOR "Ninja")
+set(CMAKE_BUILD_TYPE "MinSizeRel")
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
     add_compile_options (-fdiagnostics-color=always)
@@ -8,32 +12,51 @@ elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
     add_compile_options (-fcolor-diagnostics)
 endif ()
 
-SET(CPACK_GENERATOR "ZIP")
+## package settings
+IF (WIN32)
+ set(CPACK_SOURCE_GENERATOR "ZIP")
+ set(CPACK_GENERATOR "ZIP")
+ set(CPACK_SYSTEM_NAME "Windows-amd64")
+ set(CPACK_TOPLEVEL_TAG "Windows-amd64")
+ELSE()
+  set(CPACK_SOURCE_GENERATOR "TGZ")
+  set(CPACK_GENERATOR "TGZ")
+  set(CPACK_SYSTEM_NAME "Linux-amd64")
+  set(CPACK_TOPLEVEL_TAG "Linux-amd64")
+ENDIF()
+
+set(CPACK_PACKAGE_DIRECTORY "highlightcommander")
+set(CPACK_INCLUDE_TOPLEVEL_DIRECTORY OFF)
+
+set(CPACK_PACKAGE_NAME "highlightcommander")
 SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Higlight Commander Lister Plugin")
 set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Scott Dillman")
 SET(CPACK_PACKAGE_VENDOR "scott@bitwise.ninja")
 SET(CPACK_PACKAGE_VERSION_MAJOR "1")
 SET(CPACK_PACKAGE_VERSION_MINOR "0")
-SET(CPACK_PACKAGE_VERSION_PATCH "1")
-set(CPACK_PACKAGE_VERSION "1.0.1")
+SET(CPACK_PACKAGE_VERSION_PATCH "2")
+set(CPACK_PACKAGE_VERSION "1.0.2")
+set(CPACK_SOURCE_PACKAGE_FILE_NAME "highlightcommander")
+set(CPACK_PACKAGE_INSTALL_DIRECTORY "highlightcommander")
 set(CPACK_RESOURCE_FILE_README "${CMAKE_SOURCE_DIR}/README.md")
 SET(CPACK_STRIP_FILES TRUE)
 set(CPACK_SOURCE_IGNORE_FILES "${CMAKE_SOURCE_DIR}/build/;${CMAKE_SOURCE_DIR}/.git/;")
 set(CPACK_IGNORE_FILES "${CMAKE_SOURCE_DIR}/build/;${CMAKE_SOURCE_DIR}/.git/;")
 
+## packaging
+INCLUDE(CPack)
+
 set(CMAKE_VERBOSE_MAKEFILE OFF)
 set(CMAKE_COLOR_MAKEFILE   ON)
 
-project (highlightcommander)
-
+## yaml support
 add_subdirectory (yaml-cpp)
 
+## directories
 include_directories(".")
-
 include_directories("./highlight/src/include/")
 include_directories("./sdk")
 include_directories("./yaml-cpp/include")
-
 include_directories("/usr/include/qt/QtWidgets")
 include_directories("/usr/include/qt/")
 include_directories("/usr/include/qt/QtCore")
@@ -53,11 +76,13 @@ add_library(astyle OBJECT ./highlight/src/core/astyle/ASBeautifier.cpp ./highlig
 # highlight core
 add_library(core OBJECT ./highlight/src/core/ansigenerator.cpp ./highlight/src/core/bbcodegenerator.cpp ./highlight/src/core/codegenerator.cpp ./highlight/src/core/datadir.cpp ./highlight/src/core/elementstyle.cpp ./highlight/src/core/htmlgenerator.cpp ./highlight/src/core/keystore.cpp ./highlight/src/core/latexgenerator.cpp ./highlight/src/core/lspclient.cpp ./highlight/src/core/odtgenerator.cpp ./highlight/src/core/pangogenerator.cpp ./highlight/src/core/platform_fs.cpp ./highlight/src/core/preformatter.cpp ./highlight/src/core/rtfgenerator.cpp ./highlight/src/core/stringtools.cpp ./highlight/src/core/stylecolour.cpp ./highlight/src/core/svggenerator.cpp ./highlight/src/core/syntaxreader.cpp ./highlight/src/core/texgenerator.cpp ./highlight/src/core/themereader.cpp ./highlight/src/core/xhtmlgenerator.cpp ./highlight/src/core/xterm256generator.cpp)
 
+## highlight class
 add_library(app OBJECT src/hc_wlx.cpp)
 
 ## main wlx plugin
 add_library(highlightcommander MODULE src/plugin.cpp)
 
+## compiler options
 target_compile_options(highlightcommander PUBLIC -std=c++17 -Wall -O2 -fdiagnostics-color=always)
 
 IF (WIN32)
@@ -66,12 +91,24 @@ ELSE()
   target_link_libraries (highlightcommander lua yaml Diluculum astyle core app)
 ENDIF()
 
+## target properties
 set_target_properties(highlightcommander PROPERTIES SUFFIX ".wlx")
 set_target_properties(highlightcommander PROPERTIES PREFIX "")
 
+## linker options
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -static-libgcc -static-libstdc++ -Wl,-Bstatic -lstdc++ -lpthread -Wl,-Bdynamic,--no-as-needed")
 
+## main files
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/dist/" DESTINATION ".")
+## themes
+install(DIRECTORY "${PROJECT_SOURCE_DIR}/highlight/themes" DESTINATION ".")
+## syntax definitions
+install(DIRECTORY "${PROJECT_SOURCE_DIR}/highlight/langDefs" DESTINATION ".")
+## LUA plugin scripts
+install(DIRECTORY "${PROJECT_SOURCE_DIR}/highlight/plugins" DESTINATION ".")
+## filetype definitions
+install(FILES "${PROJECT_SOURCE_DIR}/highlight/filetypes.conf" DESTINATION ".")
+## target
 install(TARGETS highlightcommander DESTINATION ".")
 
-INCLUDE(CPack)
+
