@@ -87,7 +87,7 @@ add_library(highlightcommander MODULE src/plugin.cpp)
 IF (WIN32)
 find_package(Lua REQUIRED)
 target_include_directories(highlightcommander PRIVATE ${LUA_INCLUDE_DIR})
-target_link_libraries(highlightcommander PRIVATE ${LUA_LIBRARIES})
+## target_link_libraries(highlightcommander PRIVATE ${LUA_LIBRARIES})
 ENDIF()
 
 ## compiler options
@@ -98,7 +98,7 @@ target_compile_options(highlightcommander PUBLIC -std=c++17 -Wall -O2 -fdiagnost
 ENDIF()
 
 IF (WIN32)
- target_link_libraries (highlightcommander comdlg32 gdi32 comdlg32 ryml Diluculum astyle core app)
+ target_link_libraries (highlightcommander ${LUA_LIBRARIES} comdlg32 gdi32 comdlg32 ryml Diluculum astyle core app)
 ELSE()
   target_link_libraries (highlightcommander lua yaml Diluculum astyle core app)
 ENDIF()
