@@ -1,7 +1,11 @@
 cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
 
 IF (WIN32)
-set(CMAKE_TOOLCHAIN_FILE "C:/vcpkg/scripts/buildsystems/vcpkg.cmake")
+
+set(VCPKG_DIR "C:/vcpkg/installed/x64-windows")
+set(VCPKG_TARGET_TRIPLET "x64-windows" CACHE STRING "")
+set(CMAKE_TOOLCHAIN_FILE "C:/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "")
+      
 ENDIF()
 
 project (highlightcommander)
@@ -94,7 +98,14 @@ add_library(highlightcommander MODULE src/plugin.cpp)
 IF (WIN32)
 find_package(Lua REQUIRED)
 
-find_package(Qt5Core REQUIRED)
+find_package(Qt5 COMPONENTS Core Widgets CONFIG REQUIRED)
+if (${Qt5Core_FOUND})
+    message("Found Qt " ${Qt5_VERSION})
+else()
+    message("Couldn't find Qt")
+endif()
+
+#find_package(Qt5Core REQUIRED)
 #find_package(Qt5Gui REQUIRED)
 #find_package(Qt5Widgets REQUIRED)
 
