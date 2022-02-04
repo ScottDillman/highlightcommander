@@ -1,6 +1,6 @@
 win-pre:
 	cmd /c "mkdir release"
-	cd release & cmake -G "Ninja" ..
+	cd release & cmake -Ax64 -G "Ninja" ..
 
 win-build:
 	cd release & nmake
