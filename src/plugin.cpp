@@ -3,6 +3,7 @@
 #define WIN32_LEAN_AND_MEAN      // Exclude rarely-used stuff from Windows headers
 
 #include <windows.h>
+#include <yaml-cpp/yaml.h>
 
 #endif
 
@@ -18,6 +19,7 @@
 #include <QMessageBox>
 #include <QStandardPaths>
 #include <QDir>
+
 
 
 #ifdef __linux__ 
