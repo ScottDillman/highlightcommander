@@ -143,7 +143,7 @@ target_compile_options(highlightcommander PUBLIC -std=c++17 -Wall -O2 -fdiagnost
 ENDIF()
 
 IF (WIN32)
- target_link_libraries (highlightcommander ${LUA_LIBRARIES} comdlg32 gdi32 comdlg32 ${YAML_CPP_LIBRARIES} Diluculum astyle core app)
+ target_link_libraries (highlightcommander ${LUA_LIBRARIES} comdlg32 gdi32 comdlg32 ${YAML_CPP_LIBRARIES} ${Qt5Core_LIBRARIES} Diluculum astyle core app)
 ELSE()
   target_link_libraries (highlightcommander lua yaml Diluculum astyle core app)
 ENDIF()
