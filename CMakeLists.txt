@@ -8,7 +8,7 @@ set(CMAKE_TOOLCHAIN_FILE "C:/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRIN
 set(CMAKE_GENERATOR_PLATFORM "x64" CACHE STRING "")      
 set(CMAKE_CL_64 1)
 
-message(${_VCPKG_INSTALLED_DIR})
+message("${_VCPKG_INSTALLED_DIR}")
 
 ENDIF()
 
@@ -111,6 +111,7 @@ else()
 endif()
 
 find_package(yaml-cpp 0.7 REQUIRED)
+
 
 set(BOOST_ROOT ${_VCPKG_INSTALLED_DIR})
 set(Boost_DIR ${_VCPKG_INSTALLED_DIR})
