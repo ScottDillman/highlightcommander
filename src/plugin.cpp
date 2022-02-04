@@ -149,14 +149,14 @@ string processFile(const string &apppath, const string &s)
 	//highlight::ThemeReader docStyle;
 	//bool loadOK = docStyle.load(themePath, highlight::OutputType::HTML);
 
-#ifdef _WIN32
-	// set the color
-	// set the color
-	if (loadOK)
-		BGCOLOR = RGB(docStyle.getBgColour().getRed(),
-					  docStyle.getBgColour().getGreen(),
-					  docStyle.getBgColour().getBlue());
-#endif
+// #ifdef _WIN32
+// 	set the color
+// 	set the color
+// 	if (loadOK)
+// 		BGCOLOR = RGB(docStyle.getBgColour().getRed(),
+// 					  docStyle.getBgColour().getGreen(),
+// 					  docStyle.getBgColour().getBlue());
+// #endif
 
 	////////////////////////////////////////////////////////////////////////////////
 	//                                   OPTIONS                                  //
