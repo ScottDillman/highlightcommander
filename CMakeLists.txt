@@ -7,7 +7,6 @@ set(VCPKG_TARGET_TRIPLET "x64-windows" CACHE STRING "")
 set(CMAKE_TOOLCHAIN_FILE "C:/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "")
 set(CMAKE_GENERATOR_PLATFORM "x64" CACHE STRING "")      
 set(CMAKE_CL_64 1)
-message("HERE ${_VCPKG_INSTALLED_DIR}")
 
 ENDIF()
 
@@ -111,10 +110,6 @@ endif()
 
 find_package(yaml-cpp 0.7 REQUIRED)
 
-
-set(BOOST_ROOT ${_VCPKG_INSTALLED_DIR})
-set(Boost_DIR ${_VCPKG_INSTALLED_DIR})
-#set(Boost_NO_SYSTEM_PATHS ON)
 find_package(Boost REQUIRED)
 #find_package(Boost 1.75.0 REQUIRED COMPONENTS thread context coroutine PATHS ${_VCPKG_INSTALLED_DIR})
 
@@ -140,7 +135,7 @@ ENDIF()
 
 ## compiler options
 IF (WIN32)
-target_compile_options(highlightcommander PUBLIC /std:c++17 /Wall /O2)
+target_compile_options(highlightcommander PUBLIC /std:c++17 /Wall)
 ELSE()
 target_compile_options(highlightcommander PUBLIC -std=c++17 -Wall -O2 -fdiagnostics-color=always)
 ENDIF()
