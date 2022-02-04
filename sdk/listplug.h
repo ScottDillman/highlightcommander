@@ -1,6 +1,8 @@
 #ifndef _WLX_H
 #define _WLX_H
 
+#pragma once
+
 #include "common.h"
 
 /* Contents of file listplug.h */
