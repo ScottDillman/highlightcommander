@@ -111,6 +111,9 @@ endif()
 
 include_directories(${LUA_INCLUDE_DIR})
 
+find_package(yaml-cpp CONFIG REQUIRED)
+# target_link_libraries(main PRIVATE yaml-cpp)
+
 ## target_include_directories(highlightcommander ${LUA_INCLUDE_DIR})
 ## target_link_libraries(highlightcommander PRIVATE ${LUA_LIBRARIES})
 ENDIF()
@@ -134,7 +137,7 @@ set_target_properties(highlightcommander PROPERTIES PREFIX "")
 
 ## linker options
 IF (WIN32)
-find_package(yaml-cpp CONFIG REQUIRED)
+# find_package(yaml-cpp CONFIG REQUIRED)
 ELSE()
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -static-libgcc -static-libstdc++ -Wl,-Bstatic -lstdc++ -lpthread -Wl,-Bdynamic,--no-as-needed")
 ENDIF()
