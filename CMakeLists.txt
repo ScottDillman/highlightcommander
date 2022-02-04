@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
 
+IF (WIN32)
+set(CMAKE_TOOLCHAIN_FILE "C:/vcpkg/scripts/buildsystems/vcpkg.cmake")
+ENDIF()
+
 project (highlightcommander)
 
 ## defaults
