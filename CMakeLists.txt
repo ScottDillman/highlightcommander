@@ -98,6 +98,7 @@ add_library(highlightcommander MODULE src/plugin.cpp)
 IF (WIN32)
 find_package(Lua REQUIRED)
 
+
 find_package(Qt5 COMPONENTS Core Widgets CONFIG REQUIRED)
 if (${Qt5Core_FOUND})
     message("Found Qt " ${Qt5_VERSION})
@@ -105,13 +106,15 @@ else()
     message("Couldn't find Qt")
 endif()
 
+find_package(yaml-cpp REQUIRED)
+
 #find_package(Qt5Core REQUIRED)
 #find_package(Qt5Gui REQUIRED)
 #find_package(Qt5Widgets REQUIRED)
 
 include_directories(${LUA_INCLUDE_DIR})
+include_directories(${YAML_CPP_INCLUDE_DIRS})
 
-find_package(yaml-cpp 0.7.0 CONFIG REQUIRED)
 # target_link_libraries(main PRIVATE yaml-cpp)
 
 ## target_include_directories(highlightcommander ${LUA_INCLUDE_DIR})
@@ -126,7 +129,7 @@ target_compile_options(highlightcommander PUBLIC -std=c++17 -Wall -O2 -fdiagnost
 ENDIF()
 
 IF (WIN32)
- target_link_libraries (highlightcommander ${LUA_LIBRARIES} comdlg32 gdi32 comdlg32 yaml-cpp Diluculum astyle core app)
+ target_link_libraries (highlightcommander ${LUA_LIBRARIES} comdlg32 gdi32 comdlg32 ${YAML_CPP_LIBRARIES} Diluculum astyle core app)
 ELSE()
   target_link_libraries (highlightcommander lua yaml Diluculum astyle core app)
 ENDIF()
