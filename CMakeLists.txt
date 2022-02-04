@@ -89,6 +89,7 @@ add_library(highlightcommander MODULE src/plugin.cpp)
 
 IF (WIN32)
 find_package(Lua REQUIRED)
+find_package(Qt5Core CONFIG REQUIRED)
 
 include_directories(${LUA_INCLUDE_DIR})
 
