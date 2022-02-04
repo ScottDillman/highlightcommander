@@ -5,7 +5,8 @@ IF (WIN32)
 set(VCPKG_DIR "C:/vcpkg/installed/x64-windows")
 set(VCPKG_TARGET_TRIPLET "x64-windows" CACHE STRING "")
 set(CMAKE_TOOLCHAIN_FILE "C:/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "")
-      
+set(CMAKE_GENERATOR_PLATFORM "x64")      
+
 ENDIF()
 
 project (highlightcommander)
