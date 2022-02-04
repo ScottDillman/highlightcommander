@@ -60,6 +60,9 @@ include_directories("/usr/include/qt/")
 include_directories("/usr/include/qt/QtCore")
 include_directories("/usr/include/qt/QtGui")
 include_directories("./highlight/src/include")
+# yaml support
+add_library(yaml OBJECT ./yaml-cpp/src/binary.cpp ./yaml-cpp/src/convert.cpp ./yaml-cpp/src/depthguard.cpp ./yaml-cpp/src/directives.cpp ./yaml-cpp/src/emit.cpp ./yaml-cpp/src/emitfromevents.cpp ./yaml-cpp/src/emitter.cpp ./yaml-cpp/src/emitterstate.cpp ./yaml-cpp/src/emitterutils.cpp ./yaml-cpp/src/exceptions.cpp ./yaml-cpp/src/exp.cpp ./yaml-cpp/src/memory.cpp ./yaml-cpp/src/nodebuilder.cpp ./yaml-cpp/src/node.cpp ./yaml-cpp/src/node_data.cpp ./yaml-cpp/src/nodeevents.cpp ./yaml-cpp/src/null.cpp ./yaml-cpp/src/ostream_wrapper.cpp ./yaml-cpp/src/parse.cpp ./yaml-cpp/src/parser.cpp ./yaml-cpp/src/regex_yaml.cpp ./yaml-cpp/src/scanner.cpp ./yaml-cpp/src/scanscalar.cpp ./yaml-cpp/src/scantag.cpp ./yaml-cpp/src/scantoken.cpp ./yaml-cpp/src/simplekey.cpp ./yaml-cpp/src/singledocparser.cpp ./yaml-cpp/src/stream.cpp ./yaml-cpp/src/tag.cpp)
+
 ENDIF()
 
 ## directories
@@ -71,8 +74,6 @@ include_directories("./sdk")
 ## lua support
 add_library(Diluculum OBJECT ./highlight/src/core/Diluculum/InternalUtils.cpp ./highlight/src/core/Diluculum/LuaExceptions.cpp ./highlight/src/core/Diluculum/LuaFunction.cpp ./highlight/src/core/Diluculum/LuaState.cpp ./highlight/src/core/Diluculum/LuaUserData.cpp ./highlight/src/core/Diluculum/LuaUtils.cpp ./highlight/src/core/Diluculum/LuaValue.cpp ./highlight/src/core/Diluculum/LuaVariable.cpp ./highlight/src/core/Diluculum/LuaWrappers.cpp)
 
-# yaml support
-add_library(yaml OBJECT ./yaml-cpp/src/binary.cpp ./yaml-cpp/src/convert.cpp ./yaml-cpp/src/depthguard.cpp ./yaml-cpp/src/directives.cpp ./yaml-cpp/src/emit.cpp ./yaml-cpp/src/emitfromevents.cpp ./yaml-cpp/src/emitter.cpp ./yaml-cpp/src/emitterstate.cpp ./yaml-cpp/src/emitterutils.cpp ./yaml-cpp/src/exceptions.cpp ./yaml-cpp/src/exp.cpp ./yaml-cpp/src/memory.cpp ./yaml-cpp/src/nodebuilder.cpp ./yaml-cpp/src/node.cpp ./yaml-cpp/src/node_data.cpp ./yaml-cpp/src/nodeevents.cpp ./yaml-cpp/src/null.cpp ./yaml-cpp/src/ostream_wrapper.cpp ./yaml-cpp/src/parse.cpp ./yaml-cpp/src/parser.cpp ./yaml-cpp/src/regex_yaml.cpp ./yaml-cpp/src/scanner.cpp ./yaml-cpp/src/scanscalar.cpp ./yaml-cpp/src/scantag.cpp ./yaml-cpp/src/scantoken.cpp ./yaml-cpp/src/simplekey.cpp ./yaml-cpp/src/singledocparser.cpp ./yaml-cpp/src/stream.cpp ./yaml-cpp/src/tag.cpp)
 
 ## astyle support
 add_library(astyle OBJECT ./highlight/src/core/astyle/ASBeautifier.cpp ./highlight/src/core/astyle/ASEnhancer.cpp ./highlight/src/core/astyle/ASFormatter.cpp ./highlight/src/core/astyle/ASResource.cpp ./highlight/src/core/astyle/ASStreamIterator.cpp)
