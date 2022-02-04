@@ -111,12 +111,17 @@ endif()
 find_package(yaml-cpp 0.7 REQUIRED)
 
 find_package(Boost REQUIRED)
+IF (Boost_FOUND)
+    INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIR})
+    message("Found Boost")
+else()
+    message("Couldn't find Boost")
+ENDIF()
 
 #find_package(Qt5Core REQUIRED)
 #find_package(Qt5Gui REQUIRED)
 #find_package(Qt5Widgets REQUIRED)
 
-include_directories(${Boost_INCLUDE_DIR})
 include_directories(${LUA_INCLUDE_DIR})
 include_directories(${YAML_CPP_INCLUDE_DIRS})
 
