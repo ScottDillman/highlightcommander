@@ -115,7 +115,7 @@ find_package(Boost REQUIRED)
 
 IF (Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIR})
-    message("Found Boost")
+    message("Found Boost ${Boost_INCLUDE_DIR}")
 else()
     message("Couldn't find Boost")
 ENDIF()
