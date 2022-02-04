@@ -110,12 +110,13 @@ endif()
 
 find_package(yaml-cpp 0.7 REQUIRED)
 
-find_package(Boost REQUIRED boost-smart-ptr)
+find_package(Boost REQUIRED)
 
 #find_package(Qt5Core REQUIRED)
 #find_package(Qt5Gui REQUIRED)
 #find_package(Qt5Widgets REQUIRED)
 
+include_directories(${Boost_INCLUDE_DIR})
 include_directories(${LUA_INCLUDE_DIR})
 include_directories(${YAML_CPP_INCLUDE_DIRS})
 
