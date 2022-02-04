@@ -110,6 +110,9 @@ endif()
 
 find_package(yaml-cpp 0.7 REQUIRED)
 
+set(BOOST_ROOT ${_VCPKG_INSTALLED_DIR})
+set(Boost_DIR ${_VCPKG_INSTALLED_DIR})
+set(Boost_NO_SYSTEM_PATHS ON)
 find_package(Boost REQUIRED)
 IF (Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIR})
