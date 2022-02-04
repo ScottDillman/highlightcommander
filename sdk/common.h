@@ -1,5 +1,6 @@
 #ifndef _COMMON_H
 #define _COMMON_H
+#pragma once
 
 #ifdef __GNUC__
 
