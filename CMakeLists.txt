@@ -111,7 +111,7 @@ endif()
 
 include_directories(${LUA_INCLUDE_DIR})
 
-find_package(yaml-cpp CONFIG REQUIRED)
+find_package(yaml-cpp 0.7.0 CONFIG REQUIRED)
 # target_link_libraries(main PRIVATE yaml-cpp)
 
 ## target_include_directories(highlightcommander ${LUA_INCLUDE_DIR})
