@@ -103,7 +103,7 @@ find_package(Lua REQUIRED)
 ## Qt
 find_package(Qt5 COMPONENTS Core Widgets CONFIG REQUIRED)
 if (${Qt5Core_FOUND})
-    message("Found Qt " ${Qt5_VERSION} ${Qt5Core_INCLUDE_DIRS})
+    message("Found Qt ${Qt5_VERSION} : ${Qt5Core_INCLUDE_DIRS}")
 else()
     message("Couldn't find Qt")
 endif()
