@@ -50,20 +50,22 @@ set(CMAKE_VERBOSE_MAKEFILE OFF)
 set(CMAKE_COLOR_MAKEFILE   ON)
 
 ## yaml support
-add_subdirectory (yaml-cpp)
+IF (WIN32)
 
-## directories
-include_directories(".")
-include_directories("./highlight/src/include/")
-include_directories("./sdk")
+ELSE()
+add_subdirectory (yaml-cpp)
 include_directories("./yaml-cpp/include")
 include_directories("/usr/include/qt/QtWidgets")
 include_directories("/usr/include/qt/")
 include_directories("/usr/include/qt/QtCore")
 include_directories("/usr/include/qt/QtGui")
 include_directories("./highlight/src/include")
-include_directories("./yaml-cpp/include")
+ENDIF()
 
+## directories
+include_directories(".")
+include_directories("./highlight/src/include/")
+include_directories("./sdk")
 
 
 ## lua support
@@ -101,7 +103,7 @@ target_compile_options(highlightcommander PUBLIC -std=c++17 -Wall -O2 -fdiagnost
 ENDIF()
 
 IF (WIN32)
- target_link_libraries (highlightcommander ${LUA_LIBRARIES} comdlg32 gdi32 comdlg32 ryml Diluculum astyle core app)
+ target_link_libraries (highlightcommander ${LUA_LIBRARIES} comdlg32 gdi32 comdlg32 yaml-cpp Diluculum astyle core app)
 ELSE()
   target_link_libraries (highlightcommander lua yaml Diluculum astyle core app)
 ENDIF()
@@ -112,7 +114,7 @@ set_target_properties(highlightcommander PROPERTIES PREFIX "")
 
 ## linker options
 IF (WIN32)
-
+find_package(yaml-cpp CONFIG REQUIRED)
 ELSE()
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -static-libgcc -static-libstdc++ -Wl,-Bstatic -lstdc++ -lpthread -Wl,-Bdynamic,--no-as-needed")
 ENDIF()
