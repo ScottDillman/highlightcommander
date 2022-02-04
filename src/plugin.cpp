@@ -411,10 +411,10 @@ int DCPCALL ListSearchText(HWND ListWin, char* SearchString, int SearchParameter
 		view->setTextCursor(cursor);
 	}
 
-	if (view->find(SearchString, sflags))
-		return LISTPLUGIN_OK;
-	else
-		QMessageBox::information(view, "", QString::asprintf(_("\"%s\" not found!"), SearchString));
+// 	if (view->find(SearchString, sflags))
+// 		return LISTPLUGIN_OK;
+// 	else
+// 		QMessageBox::information(view, "", QString::asprintf(_("\"%s\" not found!"), SearchString));
 
 	return LISTPLUGIN_ERROR;
 }
