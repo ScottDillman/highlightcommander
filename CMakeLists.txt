@@ -106,7 +106,7 @@ else()
     message("Couldn't find Qt")
 endif()
 
-find_package(yaml-cpp REQUIRED)
+find_package(yaml-cpp 0.7 REQUIRED)
 
 #find_package(Qt5Core REQUIRED)
 #find_package(Qt5Gui REQUIRED)
