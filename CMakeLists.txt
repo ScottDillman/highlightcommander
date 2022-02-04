@@ -126,6 +126,7 @@ ENDIF()
 
 include_directories(${LUA_INCLUDE_DIR})
 include_directories(${YAML_CPP_INCLUDE_DIRS})
+include_directories(${Qt5Core_INCLUDE_DIRS})
 
 # target_link_libraries(main PRIVATE yaml-cpp)
 
