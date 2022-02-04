@@ -113,7 +113,7 @@ find_package(yaml-cpp 0.7 REQUIRED)
 set(BOOST_ROOT ${_VCPKG_INSTALLED_DIR})
 set(Boost_DIR ${_VCPKG_INSTALLED_DIR})
 set(Boost_NO_SYSTEM_PATHS ON)
-find_package(Boost REQUIRED PATHS ${_VCPKG_INSTALLED_DIR})
+find_package(Boost REQUIRED)
 #find_package(Boost 1.75.0 REQUIRED COMPONENTS thread context coroutine PATHS ${_VCPKG_INSTALLED_DIR})
 
 IF (Boost_FOUND)
