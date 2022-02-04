@@ -91,6 +91,8 @@ IF (WIN32)
 find_package(Lua REQUIRED)
 find_package(Qt5Core CONFIG REQUIRED)
 
+include_directories(${QT_INCLUDE_DIR})
+
 include_directories(${LUA_INCLUDE_DIR})
 
 ## target_include_directories(highlightcommander ${LUA_INCLUDE_DIR})
