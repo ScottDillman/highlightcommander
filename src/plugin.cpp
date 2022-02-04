@@ -10,13 +10,17 @@
 #include <QStandardPaths>
 #include <QDir>
 
-#include "yaml-cpp/yaml.h"
 
+#ifdef __linux__ 
+
+#include "yaml-cpp/yaml.h"
 #include <dlfcn.h>
 #include <libintl.h>
 #include <locale.h>
 #define _(STRING) gettext(STRING)
 #define GETTEXT_PACKAGE "plugins"
+
+#endif
 
 #include "listplug.h"
 #include "hc_wlx.h"
