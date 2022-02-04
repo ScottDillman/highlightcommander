@@ -103,7 +103,7 @@ find_package(Lua REQUIRED)
 ## Qt
 find_package(Qt5 COMPONENTS Core Gui CONFIG REQUIRED)
 if (${Qt5Core_FOUND})
-    message("Found Qt ${Qt5_VERSION} : ${Qt5Core_INCLUDE_DIRS}")
+    message("Found Qt ${Qt5_VERSION} : ${Qt5Core_INCLUDE_DIRS} : ${Qt5Gui_INCLUDE_DIRS}")
 else()
     message("Couldn't find Qt")
 endif()
@@ -127,6 +127,7 @@ ENDIF()
 include_directories(${LUA_INCLUDE_DIR})
 include_directories(${YAML_CPP_INCLUDE_DIRS})
 include_directories(${Qt5Core_INCLUDE_DIRS})
+include_directories(${Qt5Gui_INCLUDE_DIRS})
 
 # target_link_libraries(main PRIVATE yaml-cpp)
 
