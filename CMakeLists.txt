@@ -101,7 +101,7 @@ IF (WIN32)
 find_package(Lua REQUIRED)
 
 ## Qt
-find_package(Qt5 COMPONENTS Core gui CONFIG REQUIRED)
+find_package(Qt5 COMPONENTS Core GUI CONFIG REQUIRED)
 if (${Qt5Core_FOUND})
     message("Found Qt ${Qt5_VERSION} : ${Qt5Core_INCLUDE_DIRS}")
 else()
