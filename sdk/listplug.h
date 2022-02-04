@@ -1,4 +1,3 @@
- 
 #ifndef _WLX_H
 #define _WLX_H
 
@@ -19,6 +18,8 @@
 #define lcp_forceshow	16
 #define lcp_fitlargeronly 32
 #define lcp_center	64
+#define lcp_darkmode	128
+#define lcp_darkmodenative	256
 
 #define lcs_findfirst	1
 #define lcs_matchcase	2
