@@ -7,8 +7,7 @@ set(VCPKG_TARGET_TRIPLET "x64-windows" CACHE STRING "")
 set(CMAKE_TOOLCHAIN_FILE "C:/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "")
 set(CMAKE_GENERATOR_PLATFORM "x64" CACHE STRING "")      
 set(CMAKE_CL_64 1)
-
-message("${_VCPKG_INSTALLED_DIR}")
+message("HERE ${_VCPKG_INSTALLED_DIR}")
 
 ENDIF()
 
