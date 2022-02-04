@@ -142,6 +142,8 @@ ELSE()
 target_compile_options(highlightcommander PUBLIC -std=c++17 -Wall -O2 -fdiagnostics-color=always)
 ENDIF()
 
+message("HERE ${YAML_CPP_LIBRARIES}")
+
 IF (WIN32)
  target_link_libraries (highlightcommander ${LUA_LIBRARIES} comdlg32 gdi32 comdlg32 ${YAML_CPP_LIBRARIES} ${Qt5Core_LIBRARIES} ${Qt5Widgets_LIBRARIES} ${Qt5Gui_LIBRARIES} Diluculum astyle core app)
 ELSE()
